@@ -21,12 +21,7 @@ loaders.push({
 loaders.push({
 	test: /\.scss$/,
 	exclude: /[\/\\](node_modules|bower_components|public\/)[\/\\]/,
-	loaders: [
-		'style?sourceMap',
-		'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]&sourceMap',
-		'postcss',
-		'sass'
-	]
+	loaders: ["style-loader", "css-loader", "sass-loader"]
 });
 
 // local css modules
@@ -35,7 +30,7 @@ loaders.push({
 	exclude: /[\/\\](node_modules|bower_components|public\/)[\/\\]/,
 	loaders: [
 		'style?sourceMap',
-		'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]&sourceMap'
+		'css?modules&importLoaders=1&localIdentName=[local]&sourceMap'
 	]
 });
 
@@ -61,7 +56,7 @@ module.exports = {
 		// do not print bundle build stats
 		noInfo: true,
 		// enable HMR
-		hot: true,
+		hot: false,
 		// embed the webpack-dev-server runtime into the bundle
 		inline: true,
 		// serve index.html in place of 404 responses to allow HTML5 history
