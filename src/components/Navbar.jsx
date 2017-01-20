@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, IndexLink } from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 
@@ -17,9 +18,23 @@ const navButtonsStyles = {
 const NavButtons = () => {
   return (
     <div>
-      <FlatButton label="Home" style={ navButtonsStyles }/>
-      <FlatButton label="Weather" style={ navButtonsStyles }/>
-      <FlatButton label="About" style={ navButtonsStyles }/>
+      <FlatButton 
+          label="Get Weather" 
+          style={ navButtonsStyles } 
+          activeClassName="active"
+          containerElement={ <IndexLink to="/" /> }/>
+
+      <FlatButton 
+          label="About" 
+          style={ navButtonsStyles }
+          activeClassName="active"
+          containerElement={ <Link to="/about" /> }/>
+
+      <FlatButton 
+          label="Examples" 
+          style={ navButtonsStyles }
+          activeClassName="active"
+          containerElement={ <Link to="/examples" /> }/>
     </div>
   );
 }
