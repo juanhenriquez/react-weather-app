@@ -13,6 +13,8 @@ import App from './app.jsx';
 
 // Child Components
 import Weather from './components/Weather';
+import Examples from './components/Examples';
+import About from './components/About';
 
 import './index.scss';
 
@@ -25,6 +27,8 @@ render(
     <Router history={ hashHistory }>
       <Route path="/" component={ App }>
         <IndexRoute component={ Weather } />
+        <Route path="/about" component={ About } />
+        <Route path="/examples" component={ Examples } />
       </Route>
     </Router>
   </MuiThemeProvider>,
