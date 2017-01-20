@@ -1,21 +1,32 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
-import App from './app.jsx';
+import { Route, Router, IndexRoute, hashHistory } from 'react-router';
+
+// Material UI.
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import muiThemeConfig from './theme';
+
+// Root Component.
+import App from './app.jsx';
+
+// Child Components
+import Weather from './components/Weather';
+
+import './index.scss';
 
 injectTapEventPlugin();
 
-render( <AppContainer><App/></AppContainer>, document.querySelector("#app"));
+const muiTheme = getMuiTheme(muiThemeConfig);
 
-if (module && module.hot) {
-  module.hot.accept('./app.jsx', () => {
-    const App = require('./app.jsx').default;
-    render(
-      <AppContainer>
-          <App/>
-      </AppContainer>,
-      document.querySelector("#app")
-    );
-  });
-}
+render(
+  <MuiThemeProvider muiTheme={ muiTheme }>
+    <Router history={ hashHistory }>
+      <Route path="/" component={ App }>
+        <IndexRoute component={ Weather } />
+      </Route>
+    </Router>
+  </MuiThemeProvider>,
+  document.querySelector("#app")
+);
