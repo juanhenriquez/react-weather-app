@@ -46,10 +46,7 @@ module.exports = {
 		filename: 'bundle.js'
 	},
 	resolve: {
-		extensions: ['', '.js', '.jsx'],
-		alias: {
-			openWeatherMap: path.join(__dirname, 'src/api/openWeatherMap.jsx')
-		}
+		extensions: ['', '.js', '.jsx']
 	},
 	module: {
 		loaders
