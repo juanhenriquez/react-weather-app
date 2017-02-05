@@ -4,8 +4,9 @@
   "description": "React Webpack Babel Starter Kit",
   "main": "''",
   "scripts": {
+    "start": "node server.js",
     "build": "webpack --config webpack.production.config.js --progress --profile --colors",
-    "start": "webpack-dev-server --progress --profile --colors",
+    "startdev": "webpack-dev-server --progress --profile --colors",
     "lint": "eslint --ext js --ext jsx src || exit 0",
     "dev": " webpack-dashboard -- webpack-dev-server --progress --profile --colors"
   },
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/alicoding/react-webpack-babel#readme",
   "dependencies": {
     "axios": "^0.15.3",
+    "express": "^4.14.1",
     "material-ui": "^0.16.7",
     "node-sass": "^4.2.0",
     "react": "15.4.2",
