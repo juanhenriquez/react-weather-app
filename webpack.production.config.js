@@ -10,14 +10,14 @@ var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 loaders.push({
 	test: /[\/\\]src[\/\\].*\.css/,
 	exclude: /(node_modules|bower_components|public\/)/,
-	loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]')
+	loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[local]')
 });
 
 // local scss modules
 loaders.push({
 	test: /[\/\\]src[\/\\].*\.scss/,
 	exclude: /(node_modules|bower_components|public\/)/,
-	loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass')
+	loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[local]!postcss!sass')
 });
 // global css files
 loaders.push({
@@ -41,7 +41,13 @@ module.exports = {
 		loaders
 	},
 	plugins: [
-		new WebpackCleanupPlugin(),
+		new HtmlWebpackPlugin({
+ 			template: './src/template.html',
+ 			files: {
+ 				css: ['style.css'],
+ 				js: [ "bundle.js"],
+ 			}
+ 		}),
 		new webpack.DefinePlugin({
 			'process.env': {
 				NODE_ENV: '"production"'

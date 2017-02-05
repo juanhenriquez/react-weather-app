@@ -11,7 +11,7 @@ const WeatherMessage = ({ isLoading, location, temp }) => {
 
   return (
     <Card style={{ margin: "20px auto", padding: "10px 20px" }}>
-      <p>Search a location in the text field above.</p>
+      <p>Search for the weather of a city by placing its name above.</p>
     </Card>
   );
 }

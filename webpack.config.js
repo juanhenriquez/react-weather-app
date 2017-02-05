@@ -69,7 +69,11 @@ module.exports = {
 		new webpack.HotModuleReplacementPlugin(),
 		new DashboardPlugin(),
 		new HtmlWebpackPlugin({
-			template: './src/template.html'
+			template: './src/template.html',
+			files: {
+ 				css: ['style.css'],
+ 				js: [ "bundle.js"]
+			}
 		}),
 	]
 };
