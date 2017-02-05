@@ -18,20 +18,20 @@ const navButtonsStyles = {
 const NavButtons = () => {
   return (
     <div>
-      <FlatButton 
-          label="Get Weather" 
-          style={ navButtonsStyles } 
+      <FlatButton
+          label="Get Weather"
+          style={ navButtonsStyles }
           activeClassName="active"
           containerElement={ <IndexLink to="/" /> }/>
 
-      <FlatButton 
-          label="About" 
+      <FlatButton
+          label="About"
           style={ navButtonsStyles }
           activeClassName="active"
           containerElement={ <Link to="/about" /> }/>
 
-      <FlatButton 
-          label="Examples" 
+      <FlatButton
+          label="Examples"
           style={ navButtonsStyles }
           activeClassName="active"
           containerElement={ <Link to="/examples" /> }/>
@@ -39,16 +39,14 @@ const NavButtons = () => {
   );
 }
 
-class Navbar extends React.Component {
-  render () {
-    return (
-      <AppBar
-          title="React Weather App"
-          showMenuIconButton={false}
-          iconElementRight={ <NavButtons /> }
-          iconStyleRight={ navButtonsContainerStyles }/>
-    );
-  }
-}
+const Navbar = props => {
+  return (
+    <AppBar
+        title="React Weather App"
+        showMenuIconButton={false}
+        iconElementRight={ <NavButtons /> }
+        iconStyleRight={ navButtonsContainerStyles }/>
+  );
+};
 
 export default Navbar;

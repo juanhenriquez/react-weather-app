@@ -17,6 +17,10 @@
   background-position: center;
 }
 
+.circular-progress-loader {
+  margin-right: 20px;
+}
+
 .weather-container {
   display: flex;
   justify-content: center;
@@ -40,6 +44,6 @@
   text-align: center;
   margin-top: -100px;
   margin-bottom: 20px;
-  color: #E91E63;
+  color: #004d40;
   font-style: italic;
 }
