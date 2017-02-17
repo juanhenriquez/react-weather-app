@@ -7,7 +7,9 @@ export default class App extends React.Component {
     return (
       <div className="bg-container">
         <Navbar />
-        { this.props.children }
+				<div className="weather-container">
+        	{ this.props.children }
+				</div>
       </div>
     )
   }

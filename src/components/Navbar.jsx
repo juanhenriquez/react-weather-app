@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, IndexLink } from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 
 const navButtonsContainerStyles = {
@@ -17,7 +19,7 @@ const navButtonsStyles = {
 
 const NavButtons = () => {
   return (
-    <div>
+    <div className="nav__actions">
       <FlatButton
           label="Get Weather"
           style={ navButtonsStyles }
@@ -35,6 +37,21 @@ const NavButtons = () => {
           style={ navButtonsStyles }
           activeClassName="active"
           containerElement={ <Link to="/examples" /> }/>
+
+			<div className="search-weather__container">
+				<TextField
+						className="search-weather__input"
+						hintText="Search Weather"
+						inputStyle={ { color: '#fff' }}
+						hintStyle={{ color: "#bdbdbd"}}
+						underlineFocusStyle={{ borderColor: '#E91E63' }}/>
+
+				<RaisedButton
+					label="Search"
+					style={ navButtonsStyles }
+					onClick={ e => console.log(e)}/>
+			</div>
+
     </div>
   );
 }

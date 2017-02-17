@@ -27,7 +27,7 @@ class Weather extends React.Component {
     const { isLoading, temp, location } = this.state;
 
     return (
-      <div className="weather-container">
+      <div>
         <WeatherForm onSearch={ this.handleSearch }/>
         <WeatherMessage temp={ temp } location={ location } isLoading={ isLoading }/>
       </div>
