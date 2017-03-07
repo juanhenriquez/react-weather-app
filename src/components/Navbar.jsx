@@ -17,53 +17,68 @@ const navButtonsStyles = {
   'color': "#fff",
 };
 
-const NavButtons = () => {
-  return (
-    <div className="nav__actions">
-      <FlatButton
-          label="Get Weather"
-          style={ navButtonsStyles }
-          activeClassName="active"
-          containerElement={ <IndexLink to="/" /> }/>
+class Navbar extends React.Component {
 
-      <FlatButton
-          label="About"
-          style={ navButtonsStyles }
-          activeClassName="active"
-          containerElement={ <Link to="/about" /> }/>
+  constructor(props) {
+    super(props);
+  }
 
-      <FlatButton
-          label="Examples"
-          style={ navButtonsStyles }
-          activeClassName="active"
-          containerElement={ <Link to="/examples" /> }/>
+  onSearch = (e) => {
+    e.preventDefault();
+    const location = this.refs.search.input.value;
+    const encodedLocation = encodeURIComponent(location);
 
-			<div className="search-weather__container">
-				<TextField
-						className="search-weather__input"
-						hintText="Search Weather"
-						inputStyle={ { color: '#fff' }}
-						hintStyle={{ color: "#bdbdbd"}}
-						underlineFocusStyle={{ borderColor: '#E91E63' }}/>
+    if (location.length > 0) {
+      this.refs.search.input.value = '';
+      window.location.hash = `#/?location=${encodedLocation}`;
+    }
+  };
 
-				<RaisedButton
-					label="Search"
-					style={ navButtonsStyles }
-					onClick={ e => console.log(e)}/>
-			</div>
+  render () {
+    return (
+      <AppBar
+          title="React Weather App"
+          showMenuIconButton={false}
+          iconElementRight={
+            <div className="nav__actions">
+              <FlatButton
+                  label="Get Weather"
+                  style={ navButtonsStyles }
+                  activeClassName="active"
+                  containerElement={ <IndexLink to="/" /> }/>
 
-    </div>
-  );
-}
+              <FlatButton
+                  label="About"
+                  style={ navButtonsStyles }
+                  activeClassName="active"
+                  containerElement={ <Link to="/about" /> }/>
 
-const Navbar = props => {
-  return (
-    <AppBar
-        title="React Weather App"
-        showMenuIconButton={false}
-        iconElementRight={ <NavButtons /> }
-        iconStyleRight={ navButtonsContainerStyles }/>
-  );
+              <FlatButton
+                  label="Examples"
+                  style={ navButtonsStyles }
+                  activeClassName="active"
+                  containerElement={ <Link to="/examples" /> }/>
+
+              <div className="search-weather__container">
+                <TextField
+                    className="search-weather__input"
+                    hintText="Search Weather"
+                    ref="search"
+                    inputStyle={ { color: '#fff' }}
+                    hintStyle={{ color: "#bdbdbd"}}
+                    underlineFocusStyle={{ borderColor: '#E91E63' }}/>
+
+                <RaisedButton
+                  label="Search"
+                  style={ navButtonsStyles }
+                  onClick={ e => this.onSearch(e) }/>
+              </div>
+
+            </div>
+          }
+          iconStyleRight={ navButtonsContainerStyles }/>
+    );
+  }
 };
 
 export default Navbar;
