@@ -7,15 +7,14 @@ class OpenWeatherMap {
   }
   getTemp() {
     var requestUrl = this.parseUrl();
-    return axios.get(requestUrl).then(response => {
-      if (response.data.cod &&  response.data.message) {
-        throw new Error(response.data.message);
-      } else {
-        return response.data.main.temp;
-      }
-    }, reason => {
-      throw new Error(reason.data.message);
-    });
+    return axios.get(requestUrl)
+			.then(response => {
+				if (response.data.cod &&  response.data.message) {
+					throw new Error(response.data.message);
+				} else {
+					return response.data.main.temp;
+				}
+			});
   }
   parseUrl() {
     let encodedLocation = encodeURIComponent(this.location);
